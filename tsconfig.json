@@ -4,16 +4,20 @@
     "module": "commonjs",
     "typeRoots": [
       "src/@types",
-      "node_module/@types"
+      "node_modules/@types"
     ],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "exactOptionalPropertyTypes": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false
   },
   "include": [
-    "src/*"
+    "src",
+    "app.ts"
   ],
   "exclude": [
     "node_modules"
