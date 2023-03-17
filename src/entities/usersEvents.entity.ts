@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+	Column,
+	CreateDateColumn,
+	Entity,
+	ManyToOne,
+	PrimaryGeneratedColumn,
+} from "typeorm";
 import Events from "./events.entity";
 
 import User from "./users.entity";
@@ -14,6 +20,9 @@ class UsersEvents {
 		default: "participant",
 	})
 	usersType: "participant" | "owner";
+
+	@CreateDateColumn({ type: "date" })
+	addedIn: string;
 
 	@ManyToOne(() => User, (user) => user.usersEvents)
 	user: User;

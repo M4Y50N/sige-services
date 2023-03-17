@@ -1,5 +1,8 @@
 import {
 	Column,
+	CreateDateColumn,
+	UpdateDateColumn,
+	DeleteDateColumn,
 	Entity,
 	JoinColumn,
 	OneToMany,
@@ -25,6 +28,15 @@ class User {
 
 	@Column({ default: false })
 	isAdmin: boolean;
+
+	@CreateDateColumn({ type: "date" })
+	createdAt: string;
+
+	@UpdateDateColumn({ type: "date" })
+	updatedAt: string;
+
+	@DeleteDateColumn({ type: "date" })
+	deletedAt: string;
 
 	@OneToOne(() => UserInfo)
 	@JoinColumn()

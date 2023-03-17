@@ -1,12 +1,15 @@
 import "express-async-errors";
 import express, { Application, json } from "express";
 import { handleError } from "./errors";
-import accreditationRoutes from "./routes/accreditation.routes";
+import loginRoutes from "./routes/login.routes";
+import usersRoutes from "./routes/users.routes";
 
 const app: Application = express();
 app.use(json());
 
-app.use("/accreditation", accreditationRoutes);
+app.use("/login", loginRoutes);
+
+app.use("/users", usersRoutes);
 
 app.use(handleError);
 
