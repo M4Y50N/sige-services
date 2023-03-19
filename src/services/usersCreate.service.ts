@@ -33,15 +33,15 @@ const createUserService = async (payload: tCreateUser): Promise<any> => {
 
 	const createUserInfos = userInfosRepo.create({
 		...userInfosData,
-		phone: userInfosData.phone,
-		address: userInfosData.address,
-		academic: userInfosData.academic,
+		phone: createPhone,
+		address: createAddress,
+		academic: createAcademic,
 	});
 	await userInfosRepo.save(createUserInfos);
 
 	const createUser = userRepo.create({
 		...userData,
-		userInfos: userInfosData,
+		userInfos: createUserInfos,
 	});
 	await userRepo.save(createUser);
 
