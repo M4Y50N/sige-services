@@ -5,7 +5,7 @@ const createUserSchema = z.object({
 	userName: z.string(),
 	password: z.string(),
 	mail: z.string(),
-	isAdmin: z.string(),
+	isAdmin: z.boolean(),
 	userInfos: createUserInfosSchema,
 });
 

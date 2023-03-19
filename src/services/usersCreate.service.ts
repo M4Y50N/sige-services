@@ -25,6 +25,26 @@ const createUserService = async (payload: tCreateUser): Promise<any> => {
 	const createAcademic = academicRepo.create(academicData);
 	await academicRepo.save(createAcademic);
 
+	const createAddress = addressRepo.create(addressData);
+	await addressRepo.save(createAddress);
+
+	const createPhone = phoneRepo.create(phoneData);
+	await phoneRepo.save(createPhone);
+
+	const createUserInfos = userInfosRepo.create({
+		...userInfosData,
+		phone: userInfosData.phone,
+		address: userInfosData.address,
+		academic: userInfosData.academic,
+	});
+	await userInfosRepo.save(createUserInfos);
+
+	const createUser = userRepo.create({
+		...userData,
+		userInfos: userInfosData,
+	});
+	await userRepo.save(createUser);
+
 	return;
 };
 

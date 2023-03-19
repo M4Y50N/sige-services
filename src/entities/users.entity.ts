@@ -9,7 +9,7 @@ import {
 	OneToOne,
 	PrimaryGeneratedColumn,
 } from "typeorm";
-import UserInfo from "./userInfos.entity";
+import UserInfos from "./userInfos.entity";
 import UsersEvents from "./usersEvents.entity";
 
 @Entity("users")
@@ -38,9 +38,9 @@ class User {
 	@DeleteDateColumn({ type: "date" })
 	deletedAt: string;
 
-	@OneToOne(() => UserInfo)
+	@OneToOne(() => UserInfos)
 	@JoinColumn()
-	usersInfo: UserInfo;
+	userInfos: UserInfos;
 
 	@OneToMany(() => UsersEvents, (usersEvent) => usersEvent.user)
 	usersEvents: UsersEvents[];

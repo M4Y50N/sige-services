@@ -20,8 +20,8 @@ class UserInfos {
 	@Column({ length: 11 })
 	cpf: string;
 
-	@Column()
-	birthDate: Date;
+	@Column({ type: "date" })
+	birthDate: string;
 
 	@OneToOne(() => Phone)
 	@JoinColumn()
