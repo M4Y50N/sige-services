@@ -1,12 +1,15 @@
 import {
 	Column,
+	CreateDateColumn,
+	UpdateDateColumn,
+	DeleteDateColumn,
 	Entity,
 	JoinColumn,
 	OneToMany,
 	OneToOne,
 	PrimaryGeneratedColumn,
 } from "typeorm";
-import UserInfo from "./userInfos.entity";
+import UserInfos from "./userInfos.entity";
 import UsersEvents from "./usersEvents.entity";
 
 @Entity("users")
@@ -26,9 +29,18 @@ class User {
 	@Column({ default: false })
 	isAdmin: boolean;
 
-	@OneToOne(() => UserInfo)
+	@CreateDateColumn({ type: "date" })
+	createdAt: string;
+
+	@UpdateDateColumn({ type: "date" })
+	updatedAt: string;
+
+	@DeleteDateColumn({ type: "date" })
+	deletedAt: string;
+
+	@OneToOne(() => UserInfos)
 	@JoinColumn()
-	usersInfo: UserInfo;
+	userInfos: UserInfos;
 
 	@OneToMany(() => UsersEvents, (usersEvent) => usersEvent.user)
 	usersEvents: UsersEvents[];

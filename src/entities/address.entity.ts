@@ -14,7 +14,7 @@ class Address {
 	@Column({ length: 8 })
 	cep: string;
 
-	@Column({ length: 30 })
+	@Column({ length: 2 })
 	state: string;
 
 	@Column({ length: 30 })

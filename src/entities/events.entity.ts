@@ -1,5 +1,6 @@
 import {
 	Column,
+	CreateDateColumn,
 	Entity,
 	JoinColumn,
 	OneToMany,
@@ -19,6 +20,12 @@ class Events {
 
 	@Column({ type: "text" })
 	location: string;
+
+	@CreateDateColumn({ type: "date" })
+	createdAt: string;
+
+	@CreateDateColumn({ type: "date" })
+	updatedAt: string;
 
 	@OneToOne(() => EventInfos)
 	@JoinColumn()
