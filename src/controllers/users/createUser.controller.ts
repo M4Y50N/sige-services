@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User from "../../entities/users.entity";
 import { tCreateUser } from "../../interfaces/users.interfaces";
-import createUserService from "../../services/usersCreate.service";
+import createUserService from "../../services/users/usersCreate.service";
 
 const createUserController = async (
 	req: Request,

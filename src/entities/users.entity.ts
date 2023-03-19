@@ -23,7 +23,7 @@ class User {
 	@Column({ length: 30 })
 	password: string;
 
-	@Column({ length: 30 })
+	@Column({ length: 30, unique: true })
 	email: string;
 
 	@Column({ default: false })

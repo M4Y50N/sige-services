@@ -4,9 +4,21 @@ import { createUserInfosSchema } from "./userInfos.schema";
 const createUserSchema = z.object({
 	userName: z.string(),
 	password: z.string(),
-	mail: z.string(),
+	email: z.string(),
 	isAdmin: z.boolean(),
 	userInfos: createUserInfosSchema,
 });
 
-export { createUserSchema };
+const userWithoutPassSchema = z
+	.object({
+		id: z.number(),
+	})
+	.merge(createUserSchema)
+	.omit({ password: true })
+	.extend({
+		createdAt: z.string(),
+		updatedAt: z.string(),
+		deletedAt: z.string().nullish(),
+	});
+
+export { createUserSchema, userWithoutPassSchema };

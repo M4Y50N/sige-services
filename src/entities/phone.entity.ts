@@ -5,10 +5,10 @@ class Phone {
 	@PrimaryGeneratedColumn("increment")
 	id: number;
 
-	@Column({ length: 11 })
+	@Column({ length: 11, unique: true })
 	cellPhone: string;
 
-	@Column({ length: 15, nullable: true })
+	@Column({ length: 15, unique: true })
 	landLine: string;
 }
 

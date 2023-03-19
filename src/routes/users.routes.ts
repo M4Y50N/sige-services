@@ -1,12 +1,14 @@
-import { Request, Response, Router } from "express";
+import { Router } from "express";
 import createUserController from "../controllers/users/createUser.controller";
+import deleteUserController from "../controllers/users/deleteUser.controller";
+import getAllUsersController from "../controllers/users/getAllUsers.controller";
 
 const usersRoutes: Router = Router();
 
-usersRoutes.get("", async (req: Request, res: Response): Promise<Response> => {
-	return res.status(200).json({ message: "Get all users" });
-});
+usersRoutes.get("", getAllUsersController);
 
 usersRoutes.post("", createUserController);
+
+usersRoutes.delete("/:id", deleteUserController);
 
 export default usersRoutes;

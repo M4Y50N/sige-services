@@ -17,7 +17,7 @@ class UserInfos {
 	@Column({ length: 45 })
 	name: string;
 
-	@Column({ length: 11 })
+	@Column({ length: 11, unique: true })
 	cpf: string;
 
 	@Column({ type: "date" })
