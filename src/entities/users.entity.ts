@@ -1,3 +1,4 @@
+import { hashSync } from "bcryptjs";
 import {
 	Column,
 	CreateDateColumn,
@@ -8,6 +9,8 @@ import {
 	OneToMany,
 	OneToOne,
 	PrimaryGeneratedColumn,
+	BeforeUpdate,
+	BeforeInsert,
 } from "typeorm";
 import UserInfos from "./userInfos.entity";
 import UsersEvents from "./usersEvents.entity";
@@ -20,7 +23,7 @@ class User {
 	@Column({ length: 45 })
 	userName: string;
 
-	@Column({ length: 30 })
+	@Column()
 	password: string;
 
 	@Column({ length: 30, unique: true })
@@ -44,6 +47,12 @@ class User {
 
 	@OneToMany(() => UsersEvents, (usersEvent) => usersEvent.user)
 	usersEvents: UsersEvents[];
+
+	@BeforeInsert()
+	@BeforeUpdate()
+	hashPassword() {
+		this.password = hashSync(this.password, 7);
+	}
 }
 
 export default User;

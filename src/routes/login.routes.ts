@@ -1,12 +1,8 @@
-import { Request, Response, Router } from "express";
+import { Router } from "express";
+import loginController from "../controllers/login.controller";
 
 const loginRoutes: Router = Router();
 
-loginRoutes.post(
-	"/login",
-	async (req: Request, res: Response): Promise<Response> => {
-		return res.status(200).json({ message: "Login route" });
-	}
-);
+loginRoutes.post("", loginController);
 
 export default loginRoutes;
