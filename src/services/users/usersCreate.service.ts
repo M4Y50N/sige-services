@@ -5,9 +5,15 @@ import Address from "../../entities/address.entity";
 import Phone from "../../entities/phone.entity";
 import UserInfos from "../../entities/userInfos.entity";
 import User from "../../entities/users.entity";
-import { tCreateUser } from "../../interfaces/users.interfaces";
+import {
+	tCreateUser,
+	tUsersWithoutPass,
+} from "../../interfaces/users.interfaces";
+import { userWithoutPassSchema } from "../../schemas/users.schema";
 
-const createUserService = async (payload: tCreateUser): Promise<any> => {
+const createUserService = async (
+	payload: tCreateUser
+): Promise<tUsersWithoutPass> => {
 	const userRepo: Repository<User> = AppDataSource.getRepository(User),
 		userInfosRepo: Repository<UserInfos> =
 			AppDataSource.getRepository(UserInfos),
@@ -45,7 +51,9 @@ const createUserService = async (payload: tCreateUser): Promise<any> => {
 	});
 	await userRepo.save(createUser);
 
-	return;
+	const userWithoutPass = userWithoutPassSchema.parse(createUser);
+
+	return userWithoutPass;
 };
 
 export default createUserService;

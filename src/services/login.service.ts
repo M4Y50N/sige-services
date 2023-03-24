@@ -25,22 +25,20 @@ const loginService = async (loginData: tLogin): Promise<any> => {
 		user[0].password
 	);
 
-	console.log(matchPass);
-
 	if (!matchPass) {
 		throw new AppError("Invalid credentials", 401);
 	}
 
-	// const token: string = jwt.sign(
-	// 	{ admin: user[0].isAdmin },
-	// 	process.env.SECRET_KEY!,
-	// 	{
-	// 		expiresIn: "72h",
-	// 		subject: user[0].id.toString(),
-	// 	}
-	// );
+	const token: string = jwt.sign(
+		{ admin: user[0].isAdmin },
+		process.env.SECRET_KEY!,
+		{
+			expiresIn: "72h",
+			subject: user[0].id.toString(),
+		}
+	);
 
-	// return token;
+	return token;
 };
 
 export default loginService;
