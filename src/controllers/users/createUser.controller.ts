@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
-import User from "../../entities/users.entity";
-import { tCreateUser } from "../../interfaces/users.interfaces";
+import {
+	tCreateUser,
+	tUsersWithoutPass,
+} from "../../interfaces/users.interfaces";
 import createUserService from "../../services/users/usersCreate.service";
 
 const createUserController = async (
@@ -9,7 +11,7 @@ const createUserController = async (
 ): Promise<Response> => {
 	const userData: tCreateUser = req.body;
 
-	const userCreated: User = await createUserService(userData);
+	const userCreated: tUsersWithoutPass = await createUserService(userData);
 
 	return res.status(201).json(userCreated);
 };
