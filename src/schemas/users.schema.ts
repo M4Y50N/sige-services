@@ -21,4 +21,6 @@ const userWithoutPassSchema = z
 		deletedAt: z.string().nullish(),
 	});
 
-export { createUserSchema, userWithoutPassSchema };
+const updateUserSchema = createUserSchema.partial();
+
+export { createUserSchema, userWithoutPassSchema, updateUserSchema };
