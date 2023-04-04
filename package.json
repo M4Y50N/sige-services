@@ -1,0 +1,14 @@
+{
+	"name": "sige_doc",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "git@github.com:M4Y50N/sige-services.git",
+	"author": "pethe <pethersonreis@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"build": "insomnia-documenter --config ./config.json --logo ./logo.png"
+	},
+	"dependencies": {
+		"insomnia-documenter": "^0.5.5"
+	}
+}
