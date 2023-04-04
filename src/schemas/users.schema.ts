@@ -3,7 +3,7 @@ import { createUserInfosSchema } from "./userInfos.schema";
 
 const createUserSchema = z.object({
 	userName: z.string(),
-	password: z.string(),
+	password: z.string().min(8),
 	email: z.string(),
 	isAdmin: z.boolean(),
 	userInfos: createUserInfosSchema,
