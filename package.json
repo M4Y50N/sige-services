@@ -1,0 +1,15 @@
+{
+	"name": "sige_doc",
+	"version": "1.0.0",
+	"description": "",
+	"main": "bundle.js",
+	"scripts": {
+		"build": "insomnia-documenter --config ./config.json --logo ./assets/logo.png",
+		"postbuild": "cp assets/favicon.ico favicon.ico & cp assets/default.html index.html & cp insomnia.json assets/insomnia.json"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"insomnia-documenter": "^0.5.4"
+	}
+}
